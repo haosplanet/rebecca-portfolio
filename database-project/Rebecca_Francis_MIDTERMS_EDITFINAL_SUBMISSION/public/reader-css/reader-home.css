@@ -1,0 +1,218 @@
+/*adds a box-sizing rule to include padding and borders in element's total width and height*/
+* {
+    box-sizing: border-box; 
+}
+
+/*resets the default margin, padding, and styling for the body*/
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #e2ded5; /*sets a beige background colour*/
+    text-align: center; /*aligns text to the center*/
+    overflow-x: hidden;  /*hides the horizontal overflow*/
+    max-width: 100%; /*ensures the content doesn't exceed viewport width*/
+}
+
+/*sets the styling for the header*/
+header {
+    padding-top: 5px; /*adds padding to the top*/
+    padding-bottom: 20px; /*adds padding to the top*/
+    font-family: "Junge", cursive; /*font*/
+    font-style: normal; /*font style*/
+    background-color: #fff; /*sets a white background colour*/
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /*creates box shadow effect*/
+    position: relative; /*ensures the position relative for absolute positioning of home link*/
+}
+
+/*sets the styling for the main heading (h1) in the header*/
+header h1 {
+    font-weight: 100; /*font weight*/
+    font-size: 3.2em; /*font size*/
+    letter-spacing: 0.5em; /*letter spacing*/
+    margin-bottom: 10px; /*adds margin to the bottom*/
+}
+
+/*sets the styling for secondary headings (h2, h3) in the header*/
+header h2,h3 {
+    font-size: 0.7em; /*font size*/
+    letter-spacing: 0.3em; /*letter spacing*/
+}
+
+/*sets the styling for secondary headings (h4)) in the header*/
+header h4 {
+    margin-top: 20px; /*adds margin to the top*/
+    margin-bottom: 5px; /*adds margin to the bottom*/
+    font-style: italic; /*italic font style*/
+    font-size: 1.7em; /*font size*/
+    letter-spacing: 0.4em;  /*letter spacing*/
+    color: #4e3a30; /*dark brown text colour*/
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /*text shadow to create a 3D effect*/
+    transform: perspective(10px) rotateX(0.5deg); /*adds perspective and slight X-axis rotation*/
+}
+
+/*sets the styling for the home link in the header*/
+.home-link {
+    position: absolute; /*sets the position to absolute for a fixed location */
+    top: 40px; /*distance from the top*/
+    left: 90px; /*distance from the left*/
+}
+
+/*sets the styling for the home link image in the header*/
+.home-link img {
+    width: 60px; /*sets image width*/
+    height: auto; /*maintains the aspect ratio*/
+}
+
+/*sets the top margin for the navigation*/
+nav {
+    margin-top: 30px; /*adds top margin for the navigation*/
+}
+
+/*sets the styling for the navigation UL*/
+nav ul {
+    list-style: none;/*removes default list style*/
+    padding: 0; /*removes padding*/
+    margin: 0; /*removes margin*/
+}
+
+/*sets the styling for the navigation links*/
+nav ul li {
+    text-align: right; /*aligns text to the right*/
+    margin: 0 280px; /*sets the left and right margin */
+}
+
+/*sets the styling for the navigation text*/
+nav ul li a {
+    text-decoration: none; /*removes underline */
+    color: #333; /*dark brown text colour*/
+    font-size: 0.7em; /*font size*/
+    letter-spacing: 0.3em; /*letter spacing*/
+    transition: color 0.3s ease, border-bottom 0.3s ease; /*creates smooth transition effects*/
+}
+
+/*sets the styling for the navigation links on hover*/
+nav ul li a:hover {
+    color: #83766f; /*changes colour on hover*/
+    border-bottom: 2px solid #83766f; /*adds underline on hover*/
+}
+
+/*sets the styling for the icons on hover*/
+nav ul li a img {
+    width: 15px; /*sets the size of settings icon*/
+    height: auto;  /*maintains the aspect ratio*/
+    margin-right: 0px; /*sets the spacing between the icon and text*/
+}
+
+/*sets the styling for the divider*/
+.divider {
+    width: 60%; /*sets the divider width*/
+    height: 2px; /*sets the divider height*/
+    background-color: #4e3a30; /*sets the divider as a dark brown colour*/
+    margin: 10px auto; /*centers the divider margin*/
+}
+
+/*sets the styling for the articles container*/
+.articles-container {
+    display: flex; /*uses a flexbox layout*/
+    flex-wrap: wrap; /*wraps items to the next line if needed*/
+    justify-content: center; /*centers to align flex items horizontally*/
+    gap: 30px; /*gap between flex items*/
+    padding: 0 20px; /*left and right padding*/
+    margin-bottom: 30px; /*adds margin to the bottom*/
+    margin-top: 30px; /*adds margin to the top*/
+}
+
+/*sets the styling for each article block*/
+.article-block {
+    background-color: #f4f4f4; /*white background colour*/
+    border: 1px solid #ddd; /*adds a border to each article block*/
+    padding: 15px; /*sets the padding of each article block*/
+    width: 400px; /*sets the width of each article block*/
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /*box shadow to create a 3D effect*/
+    border-radius: 5px; /*sets rounded corners*/
+}
+
+/*sets the styling for each article block header text*/
+.article-block h1 {
+    font-size: 0.9em; /*font size */
+    text-transform: uppercase; /*makes text uppercase*/
+    letter-spacing: 0.3em; /*letter spacing*/
+    text-align: left; /*aligns text to the left*/
+    color: black; /*black text colour*/
+}
+
+/*sets the styling for the divider*/
+.content-divider {
+    width: 90%; /*sets the divider width*/
+    height: 2px; /*sets the divider height*/
+    background-color: #e98451; /*sets the divider as a orangey brown colour*/
+    margin: 10px auto; /*centers the divider margin */
+}
+
+/*sets the styling for each article block header text*/
+.article-block h3 {
+    margin-top: 0; /*adds margin to the top*/
+    font-size: 1.5em; /*font size */
+    white-space: nowrap; /*prevents text from wrapping*/
+    overflow: hidden; /*hides the overflow text*/
+    text-overflow: ellipsis; /*displays ellipsis (...) for overflow text*/
+    text-decoration: none; /*removes text decoration*/
+    color: black; /*black text colour*/
+    text-align: center; /*aligns text to the center of the article block*/
+    margin-bottom: 0; /*removes bottom margin*/
+}
+
+/*sets the styling for each article block content text*/
+.article-content-text {
+    white-space: nowrap; /*prevents text from wrapping*/
+    overflow: hidden; /*hides the overflow text*/
+    text-decoration: none; /*removes text decoration*/
+    text-align: center; /*aligns text center*/
+    color:black; /*black text colour*/
+}
+
+/*sets the styling for each article block icon text*/
+.article-block p {
+    font-size: 0.7em; /*font size*/
+    line-height: 1.6em; /*line height between lines*/
+    text-align: right; /*aligns text to the right*/
+    color:black; /*black text colour*/
+}
+
+/*sets the styling for each article block icon likes & view text*/
+.article-block a {
+    text-decoration: none; /*removes underline*/
+    color: #333; /*black text colour*/
+}
+
+/*styling for the like and read icons*/
+.icon {
+    width: 20px; /*width of the icons*/
+    height: auto; /*maintains the aspect ratio*/
+    margin-right: 5px; /*sets spacing between icon and text*/
+    vertical-align: middle; /*aligns the icons vertically with text*/
+}
+
+/*sets the styling for the filter section */
+.filter-section {
+    margin: 20px; /*adds margin*/
+    padding: 10px; /*adds padding*/
+    border-radius: 5px; /*sets rounded corners*/
+    text-align: right; /*aligns text to the right*/
+    margin-right: 300px; /*adds margin to the right*/
+    letter-spacing: 0.2em;  /*adds letter spacing*/
+}
+
+/*sets the styling for the filter section labels*/
+.filter-section label {
+    margin-right: 10px; /*adds margin to the right*/
+    font-weight: bold; /*sets the font bold*/
+}
+
+/*sets the styling for the filter section select options*/
+.filter-section select {
+    padding: 5px; /*adds padding*/
+    border: 1px solid #ccc; /*adds border*/
+    border-radius: 4px; /*sets rounded corners*/
+    font-size: 0.9em; /*sets the font size*/
+}

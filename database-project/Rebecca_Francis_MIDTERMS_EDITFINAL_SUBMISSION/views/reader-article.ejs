@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reader Article</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Junge&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/reader-css/reader-article.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <!-- home link with home icon -->
+        <a href="/" class="home-link">
+            <img src="/images/home-icon.png" alt="Home">
+        </a>
+        <!-- blog title -->
+        <h1><%= blogTitle %></h1>
+        <!-- blog subtitle -->
+        <h2><%= blogSubtitle %></h2>
+        <!-- author name -->
+        <h3><%= authorName %></h3>
+        <!-- page Title -->
+        <h4>~ READER ARTICLE PAGE ~</h4>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <!-- link to readers home page with back arrow-->
+            <li><a href="/readers"><span>&#8592;</span> BACK TO READER HOMEPAGE</a></li>
+        </ul>
+    </nav>
+
+    <!-- Divider -->
+    <div class="divider"></div> 
+
+    <!-- Articles Section -->
+    <div class="article-block">
+        <!-- article text container -->
+        <div class="article-text">
+            <!-- displays the article title -->
+            <h1><%= article.title %></h1>
+            <!-- displays article content using HTML rendering -->
+            <div class="article-content-text"><%- article.content %></div> <!-- uses <%- %> for unescaped HTML -->
+        </div>
+        <!-- content divider -->
+        <div class="content-divider"></div>
+        <!-- displays the article published data -->
+        <p>Published: <%= article.publishedAt %></p>
+        <!-- content divider -->
+        <div class="content-divider"></div>
+        <!-- like button with heart icon -->
+        <button id="like-button">
+            <img src="/images/heart-empty.png" alt="Heart Icon" class="icon" id="like-icon">
+                Like
+        </button>
+        <!-- displays the heart icon with the number of likes -->
+        <p><img src="/images/heart-icon.png" alt="Heart Icon" class="icon"> <span id="likes-count"><%= article.likes %></span></p>
+        <!-- displays the heart icon with the number of likes -->
+        <p><img src="/images/reading-icon.png" alt="Reading Icon" class="icon"> <%= article.reads %></p>
+    </div>
+
+    <!-- Comment Form Section -->
+    <div class="comment-form-section">
+        <!--button to show/hide comment form -->
+        <button id="toggle-comment-form" class="toggle-comment-button">Add Comment</button>
+        <!-- comment form container that is initially hidden -->
+        <div id="comment-form-container" style="display: none;">
+            <form id="comment-form" action="/readers/article/<%= article.id %>/comment" method="POST">
+                <!-- label and input for commenter's name -->
+                <label for="commenterName">Your Name:</label>
+                <input type="text" id="commenterName" name="commenterName" required>
+                <br>
+                <!-- label and textarea for comment content -->
+                <label for="commentContent">Comment:</label>
+                <textarea id="commentContent" name="commentContent" rows="4" cols="50" required></textarea>
+                <br>
+                <!-- label and select for choosing an avatar -->
+                <label for="avatar">Choose Your Animal Avatar:</label>
+                <select id="avatar" name="avatar">
+                    <option value="deeravatar.png">Deer</option>
+                    <option value="bearavatar.png">Bear</option>
+                    <option value="owlavatar.png">Owl</option>
+                    <option value="pandaavatar.png">Panda</option>
+                    <option value="foxavatar.png">Fox</option>
+                </select>
+                <br>
+                <!-- button to submit the comment form -->
+                <button type="submit">Submit Comment</button>
+            </form>
+        </div>
+
+        <!-- Previous comments section -->
+        <div class="previous-comments">
+            <!-- displays the heading for previous comments -->
+            <h3>Previous Comments:</h3>
+            <!-- displays the sorting options for comments -->
+            <div class="sort-by-section">
+                Sort by:
+                <a href="/readers/article/<%= article.id %>?sortBy=name">Name</a> |
+                <a href="/readers/article/<%= article.id %>?sortBy=publishedDate">Published Date</a> |
+                <a href="/readers/article/<%= article.id %>?sortBy=createdDate">Created Date</a>
+            </div>
+            <!-- list of previous comments -->
+            <ul class="comments-list">
+                <!-- loops through each comment in the comments array -->
+                <% comments.forEach(comment => { %>
+                    <!-- comment item container -->
+                    <li>
+                        <!-- displays the commenter avatar -->
+                        <img src="/images/<%= comment.avatar %>" alt="Avatar Icon" class="icon" id="avatar-icon">
+                        <!-- displays the commenter name -->
+                        <p>Commented By : <strong><%= comment.commenterName %></strong></p>
+                        <!-- displays the comment content -->
+                        <p><%= comment.commentContent %></p>
+                        <!-- section divider -->
+                        <div class="content-divider"></div>
+                        <!-- displays the comment published date and moderation status -->
+                        <div class="comment-published-date">
+                            <p>Posted on <%= comment.createdAt %></p>
+                            <p>Status: <%= comment.moderated ? (comment.approved ? 'Approved' : 'Pending') : 'Pending' %></p>
+                        </div>
+                        <!-- displays the comment Reaction Status -->
+                        <div class="comment-reactions">
+                            <!-- thumbs up reaction form -->
+                            <form action="/authors/reaction/thumbs-up/<%= comment.id %>" method="POST" style="display:inline;">
+                                <button type="submit">👍 <%= comment.thumbsUp %></button>
+                            </form>
+                            <!-- thumbs down reaction form -->
+                            <form action="/authors/reaction/thumbs-down/<%= comment.id %>" method="POST" style="display:inline;">
+                                <button type="submit">👎 <%= comment.thumbsDown %></button>
+                            </form>
+                        </div>
+                        <!-- displays the reply by author section -->
+                        <% if (comment.replies.length > 0) { %>
+                            <div class="reply-comment-section">
+                                <!-- displays the heading for reply by author -->
+                                <h4>Reply by author:</h4>
+                                <div class="reply-columns">
+                                    <!-- loops through each reply in the comment replies array -->
+                                    <% comment.replies.forEach(reply => { %>
+                                        <div class="reply-by-author">
+                                            <!-- displays the author avatar -->
+                                            <p><img src="/images/default-avatar.png" alt="Reading Icon" class="icon"></p>
+                                            <!-- displays the reply content -->
+                                            <p><%= reply.commentContent %></p>
+                                            <!-- displays the reply published date -->
+                                            <p>Posted on <%= reply.createdAt %></p>
+                                        </div>
+                                    <% }); %>
+                                </div>
+                            </div>
+                        <% } %>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+    </div>
+         
+
+     <!-- adds JavaScript to handle article comments & replies -->
+    <script>
+        //sends a POST request to increment the view count for the article
+        fetch(`/readers/article/<%= article.id %>/increment-views`, {
+            method: 'POST'
+        });
+
+        //sends a POST request to increment the likes count when the like button is clicked, 
+        //and updates the UI accordingly
+        document.getElementById('like-button').addEventListener('click', () => {
+            fetch(`/readers/article/<%= article.id %>/increment-likes`, {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                //updates the displayed number of likes
+                document.getElementById('likes-count').innerText = data.likes;
+                //changes the like icon to filled heart icon
+                document.getElementById('like-icon').src = '/images/heart-full.png';
+                //disables the like button after it's clicked
+                document.getElementById('like-button').disabled = true;
+            });
+        });
+
+         //function to toggle comment form visibility
+        function toggleCommentForm() {
+            //retrieves the HTML element with the ID 'comment-form-container' and store it in the variable 'commentFormContainer'
+            var commentFormContainer = document.getElementById('comment-form-container');
+            if (commentFormContainer.style.display === 'none') {
+                //shows the comment form container if currently hidden
+                commentFormContainer.style.display = 'block';
+            } else {
+                //hides the comment form container if currently shown
+                commentFormContainer.style.display = 'none';
+            }
+        }
+
+        //adds an event listener to toggle button
+        document.getElementById('toggle-comment-form').addEventListener('click', toggleCommentForm);
+
+        //function to submit comment with selected avatar
+        function submitComment() {
+            //retrieves the value from the input field with ID 'commenterName' (name of the commenter)
+            const commenterName = document.getElementById('commenterName').value;
+            //retrieves the value from the input field with ID 'commentContent' (the content of the comment) 
+            const commentContent = document.getElementById('commentContent').value; 
+            //retrieves the value from the input field with ID 'avatar' (selected avatar for the comment)
+            const avatar = document.getElementById('avatar').value; 
+
+            //sends a POST request to add a new comment to the server
+            fetch(`/readers/article/<%= article.id %>/comment`, {
+                method: 'POST',
+                //sets the request header to indicate JSON data is being sent
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                //converts the comment data to a JSON string for the request body
+                body: JSON.stringify({ commenterName, commentContent, avatar })
+            })
+            .then(response => {
+                //checks if the response status is not OK
+                if (!response.ok) {
+                    //throws an error if the request failed
+                    throw new Error('Failed to add comment');
+                }
+                //reloads the page after successful submission to reflect the newly added comment
+                window.location.reload();
+            })
+            //logs any errors that occur during the fetch request
+            .catch(error => console.error('Error submitting comment:', error));
+        }
+
+    </script>
+</body>
+</html>

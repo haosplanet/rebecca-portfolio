@@ -1,0 +1,389 @@
+/*adds a box-sizing rule to include padding and borders in element's total width and height*/
+* {
+    box-sizing: border-box; 
+}
+
+/*resets the default margin, padding, and styling for the body*/
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #e2ded5; /*sets a beige background colour*/
+    text-align: center; /*aligns text to the center*/
+    overflow-x: hidden;  /*hides the horizontal overflow*/
+    max-width: 100%; /*ensures the content doesn't exceed viewport width*/
+}
+
+/*sets the styling for the header*/
+header {
+    padding-top: 5px; /*adds padding to the top*/
+    padding-bottom: 20px; /*adds padding to the top*/
+    font-family: "Junge", cursive; /*font*/
+    font-style: normal; /*font style*/
+    background-color: #fff; /*sets a white background colour*/
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /*creates box shadow effect*/
+    position: relative; /*ensures the position relative for absolute positioning of home link*/
+}
+
+/*sets the styling for the main heading (h1) in the header*/
+header h1 {
+    font-weight: 100; /*font weight*/
+    font-size: 3.2em; /*font size*/
+    letter-spacing: 0.5em; /*letter spacing*/
+    margin-bottom: 10px; /*adds margin to the bottom*/
+}
+
+/*sets the styling for secondary headings (h2, h3) in the header*/
+header h2,h3 {
+    font-size: 0.7em; /*font size*/
+    letter-spacing: 0.3em; /*letter spacing*/
+}
+
+/*sets the styling for secondary headings (h4)) in the header*/
+header h4 {
+    margin-top: 20px; /*adds margin to the top*/
+    margin-bottom: 5px; /*adds margin to the bottom*/
+    font-style: italic; /*italic font style*/
+    font-size: 1.7em; /*font size*/
+    letter-spacing: 0.4em;  /*letter spacing*/
+    color: #4e3a30; /*dark brown text colour*/
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /*text shadow to create a 3D effect*/
+    transform: perspective(10px) rotateX(0.5deg); /*adds perspective and slight X-axis rotation*/
+}
+
+/*sets the styling for the home link in the header*/
+.home-link {
+    position: absolute; /*sets the position to absolute for a fixed location */
+    top: 40px; /*distance from the top*/
+    left: 90px; /*distance from the left*/
+}
+
+/*sets the styling for the home link image in the header*/
+.home-link img {
+    width: 60px; /*sets image width*/
+    height: auto; /*maintains the aspect ratio*/
+}
+
+
+/*sets the top margin for the navigation*/
+nav {
+    margin-top: 30px; /*adds margin to the top*/
+    margin-bottom: 30px; /*adds margin to the bottom*/
+}
+
+/*sets the styling for the navigation UL*/
+nav ul {
+    list-style: none;/*removes default list style*/
+    padding: 0; /*removes padding*/
+    margin: 0; /*removes margin*/
+}
+
+/*sets the styling for the navigation links*/
+nav ul li {
+    text-align: right; /*aligns text to the right*/
+    margin: 0 300px; /*sets the left and right margin */
+}
+
+/*sets the styling for the navigation text*/
+nav ul li a {
+    text-decoration: none; /*removes underline */
+    color: #333; /*dark brown text colour*/
+    font-size: 0.7em; /*font size*/
+    letter-spacing: 0.3em; /*letter spacing*/
+    transition: color 0.3s ease, border-bottom 0.3s ease; /*creates smooth transition effects*/
+}
+
+/*sets the styling for the navigation links on hover*/
+nav ul li a:hover {
+    color: #83766f; /*changes colour on hover*/
+    border-bottom: 2px solid #83766f; /*adds underline on hover*/
+}
+
+/*sets the styling for each article block*/
+.article-block {
+    margin-bottom: 30px; /*adds margin to the bottom*/
+    margin-top: 30px; /*adds margin to the top*/
+    background-color: #f4f4f4; /*sets a white background colour*/
+    border: 1px solid #ddd; /*adds a border*/
+    padding: 15px; /*adds padding*/
+    width: 800px; /*sets the width of each article block*/
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /*box shadow to create a 3D effect*/
+    border-radius: 5px; /*sets rounded corners*/
+    position: relative; /*sets position relative*/
+    margin: 0 auto; /*centers the article block*/
+}
+
+/*sets the styling for the article text section*/
+.article-text{
+    text-align: center; /*aligns text to the center*/
+    overflow-wrap: break-word; /* breaks words to prevent overflow */
+}
+
+/*sets the styling for the article text section article title*/
+.article-text h1{
+    font-size: 1.5em; /*font size*/
+    letter-spacing: 0.2em; /*letter spacing*/
+    max-width: 100%; /* ensures content doesn't exceed parent width */
+}
+
+/*sets the styling for the article text section article content*/
+.article-content-text {
+    font-size: 1.2em; /*sets the font size*/
+    line-height: 1.3em; /*sets space between lines*/
+    max-width: 100%; /* ensures content doesn't exceed parent width */
+    color:black; /*black text colour*/
+}
+
+/*sets the styling for the divider*/
+.content-divider {
+    width: 90%; /*sets the divider width*/
+    height: 2px; /*sets the divider height*/
+    background-color: #e98451; /*sets the divider as a orangey brown colour*/
+    margin: 10px auto; /*centers the divider margin*/
+}
+
+/*sets the styling for article publish text*/
+.article-block p {
+    font-size: 0.7em; /*font size*/
+    line-height: 1.9em; /*line height between lines*/
+    text-align: right; /*aligns text to the right*/
+    color:black; /*black text colour*/
+}
+
+
+/*styling for the like and read icons*/
+.icon {
+    width: 20px; /*width of the icons*/
+    height: auto; /*maintains the aspect ratio*/
+    margin-right: 5px; /*sets spacing between icon and text*/
+    vertical-align: middle; /*aligns the icons vertically with text*/
+}
+
+/*sets the style the button*/
+button {
+    font-family: 'Junge', sans-serif; /*font*/
+    font-size: 16px; /*font size*/
+    padding: 10px 20px; /*adds padding*/
+    border: none; /*no border*/
+    cursor: pointer; /*adds pointer as cursor on hover*/
+    border-radius: 5px; /*sets rounded corners*/
+    transition: background-color 0.3s ease; /*ensures smooth background colour transition*/
+}
+
+/*sets style for the like button*/
+#like-button {
+    background: none; /*removes background*/
+    border: none; /*no border*/
+    cursor: pointer; /*adds pointer as cursor on hover*/
+    position: absolute; /*sets position to absolute*/
+    right: 10px; /*distance from the right*/
+    top: 10px; /*distance from the top*/
+    outline: none; /*removes outline*/
+}
+
+/*sets style for the like button image*/
+#like-button img {
+    width: 30px;  /*sets image width*/
+    height: auto; /*maintains the aspect ratio*/
+    transition: transform 0.2s ease; /*ensures smooth background colour transition*/
+}
+
+/*sets style for the like button when liked*/
+#like-button img.liked {
+    transform: scale(1.1); /*creates a slightly larger icon when liked*/
+}
+
+/*sets the styling for the comments section */
+.comment-form-section {
+    text-align: left; /*aligns text to the left*/
+    margin-left: 50px; /*adds margin to the left*/
+}
+
+/*sets the styling for the add comment button*/
+.toggle-comment-button{
+    background-color: #4e3a30; /*brown background colour of the button*/
+    color: #fff; /*white text colour*/
+    text-decoration: none; /*removes text decoration*/
+    padding: 10px 20px; /*adds padding*/
+    font-size: 0.7em; /*font size*/
+    border-radius: 5px; /*sets rounded corners*/
+    transition: background-color 0.3s ease; /*ensures smooth background colour transition*/
+    letter-spacing: 0.15em; /*letter spacing of text*/
+    margin-top: 30px; /*adds margin to the top*/
+    margin-bottom: 20px; /*adds margin to the bottom*/
+}
+
+/*sets the styling for the add comment button on hover*/
+.toggle-comment-button:hover {
+    background-color: #83766f; /*darker brown on hover*/
+}
+
+/*sets the styling for the comment form container*/
+#comment-form-container {
+    display: none; /*removes display*/
+    margin-top: 20px; /*adds margin to the top*/
+}
+
+/*sets the styling for each comment form in the container*/
+#comment-form {
+    display: flex; /*sets the display as a flex container*/
+    flex-direction: column; /* arranges them in a column*/
+    align-items: flex-start;  /*items aligned to the start*/
+    width: 40%; /*sets the width*/
+}
+
+/*sets the styling for each comment form label in the container*/
+#comment-form label {
+    margin-bottom: 8px; /*adds margin to the bottom*/
+    color: #333; /*dark brown text colour*/
+    font-size: 0.9em; /*font size*/
+}
+
+/*sets the styling for each comment form input & textarea in the container*/
+#comment-form input,
+#comment-form textarea {
+    width: calc(100% - 20px); /*width for input and textarea*/
+    padding: 8px; /*adds padding*/
+    margin-bottom: 12px; /*adds margin to the bottom*/
+    border: 1px solid #ddd; /*adds a border*/
+    border-radius: 5px; /*sets rounded corners*/
+    font-size: 0.9em; /*font size*/
+}
+
+/*sets the styling for each comment form textarea in the container*/
+#comment-form textarea {
+    resize: vertical; /*allows for vertical resizing for textarea*/
+}
+
+/*sets the styling for the submit comment button*/
+#comment-form button {
+    background-color: #c29a85; /*sets the background colour to light brown*/
+    color: #fff; /*sets the text colour to white*/
+    border: none; /*no border*/
+    padding: 10px 20px; /*adds padding*/
+    font-size: 0.7em; /*font size*/
+    border-radius: 5px; /*sets rounded corners*/
+    cursor: pointer;  /*adds cursor*/
+    transition: background-color 0.3s ease; /*ensures smooth background colour transition*/
+    margin-bottom: 30px; /*adds margin to the bottom*/
+    margin-left: 400px;
+}
+
+/*sets the styling for the submit comment button on hover*/
+#comment-form button:hover { 
+    background-color: #ce9272; /*darker brown on hover*/
+}
+
+/*sets the styling for the previous comments header text*/
+.previous-comments h3 {
+    color: #333; /*dark brown text colour*/
+    font-size: 1.2em; /*sets the font size*/
+    font-weight: bolder; /*sets bolder text*/
+}
+
+/*sets the styling for the previous comments list*/
+.previous-comments ul{
+    list-style: none;/*removes default list style*/
+    padding: 0; /*removes padding*/
+    margin: 0; /*removes margin*/
+    margin-bottom: 30px; /*adds margin below the previous comments section list item*/
+}
+
+/*sets the styling for the previous comments list item*/
+.previous-comments ul li {
+    margin: 15px 15px 15px 15px; /*adds margin around each list item*/
+    background-color: #D3D3D3; /*adds a light gray background colour*/
+    border-radius: 10px; /*sets rounded corners*/
+    padding: 10px 5px 10px 5px; /*adds padding */
+}
+
+/*sets the styling for the previous comments list item text*/
+.previous-comments ul li p{
+    padding: 0px; /*removes padding*/
+    margin-left: 10px; /*sets left margin */
+}
+
+/*sets the styling for the previous comments list item text published date*/
+.comment-published-date {
+    text-align: right; /*aligns text to the right*/
+    margin-right: 10px; /*sets right margin */
+    font-size: 0.8em; /*font size*/
+}
+
+/*sets the styling for the avatar icon in the comments section*/
+#avatar-icon {
+    float: right; /*aligns the image to the right*/
+    width: 5%; /*sets image width*/
+}
+
+/*sets the styling for the sort-by text and links in the comments section*/
+.sort-by-section {
+    text-align: right; /*aligns the text to the right*/
+    margin-right: 20px; /*sets right margin */
+    font-size: 1.0em; /*font size*/
+}
+
+/*sets the styling for the sort-by text comments section*/
+.sort-by-section a{
+    text-decoration: none; /*removes text decoration*/
+    color: #e98451; /*sets text colour to orange*/
+}
+
+
+/*sets the styles for the reply-by-author section*/
+.reply-by-author {
+    width: 100%; /*allows the element take up the full width of its container*/
+    margin-left: 50px; /*adds a left margin*/
+    border: 1px solid #555050; /*sets a solid border*/
+    border-radius: 5px; /*sets the rounded corners of the border*/
+    padding: 10px; /*adds padding*/
+    margin-bottom: 10px; /*adds a bottom margin*/
+    font-size: 0.8em; /*sets the font size*/
+}
+
+/*sets the styles for the reply-comment-section*/
+.reply-comment-section {
+    margin-top: 20px; /*adds a top margin*/
+}
+
+/*sets the styles for the header of the reply-comment-section*/
+.reply-comment-section h4 {
+    margin-left: 10px; /*adds a left margin*/
+    font-size: 0.7em; /*sets the font size*/
+}
+
+/*sets the styles for the reply-columns section*/
+.reply-columns {
+    display: grid; /*sets the display to grid layout*/
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /*creates a grid with columns that automatically adjust to fit the container*/
+    gap: 15px; /*adds a gap between the grid items*/
+}
+
+/*sets the styles for the comment reaction section*/
+.comment-reactions {
+    display: flex; /*allows for flexbox layout*/
+    align-items: center; /*aligns to the center*/
+    gap: 10px; /*adds space between thumbs-up and thumbs-down buttons*/
+    margin-left: 15px; /*adds a left margin to the section*/
+}
+
+/*sets the styles for the comment reactions form section*/
+.comment-reactions form {
+    display: flex; /*allows for flexbox layout*/
+    align-items: center; /*aligns the items vertically within the form */
+    border: none; /*removes the default border from the form*/
+    background: none; /*removes default background from the form*/
+    padding: 0; /*removes the default padding from the form*/
+}
+
+/*sets the styles for the comment reactions like & dislike button*/
+.comment-reactions button {
+    background-color: transparent; /*removes background colour*/
+    border: none; /*removes border*/
+    cursor: pointer; /*changes the cursor to pointer */
+    display: flex; /*allows for flexbox layout*/
+    align-items: center; /*aligns the text & emoji to the center of the button*/
+    gap: 5px; /*adds space between the icon and the count*/
+    transition: color 0.3s; /*adds transition effect for colour changes*/
+    font-size: 0.6em; /*sets the font size*/
+    background-color: #e8e8e8; /*sets the background colour for the buttons*/
+}

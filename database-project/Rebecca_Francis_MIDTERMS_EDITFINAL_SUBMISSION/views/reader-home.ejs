@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reader Homepage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Junge&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/reader-css/reader-home.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <!-- home link with home icon -->
+        <a href="/" class="home-link">
+            <img src="/images/home-icon.png" alt="Home">
+        </a>
+        <!-- blog title -->
+        <h1><%= blogTitle %></h1>
+        <!-- blog subtitle -->
+        <h2><%= blogSubtitle %></h2>
+        <!-- author name -->
+        <h3><%= authorName %></h3>
+        <!-- page Title -->
+        <h4>~ READER HOMEPAGE ~</h4>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <!-- link to authors home page -->
+            <li><a href="/authors">GO TO AUTHOR HOMEPAGE</a></li>
+        </ul>
+    </nav>
+
+    <!-- Divider -->
+    <div class="divider"></div> 
+
+    <!-- Filter Section -->
+    <div class="filter-section">
+        <!-- label for the sort dropdown -->
+        <label for="sortBy">Filter By :</label>
+         <!-- dropdown for sorting the articles -->
+        <select id="sortBy">
+            <!-- option to sort by date published -->
+            <option value="publishedAt">Date Published</option>
+            <!-- option to sort by number of likes -->
+            <option value="likes">Number of Likes</option>
+            <!-- option to sort by number of reads -->
+            <option value="reads">Number of Reads</option>
+            <!-- option to sort alphabetically by title -->
+            <option value="title">Alphabetical Title</option>
+        </select>
+    </div>
+
+    <!-- Published articles section -->
+    <div class="articles-container" id="articlesContainer">
+        <!--loops through each published articles and display each one -->
+        <% publishedArticles.forEach(article => { %>
+            <!-- article block container with data attributes for sorting -->
+            <div class="article-block" 
+                 data-likes="<%= article.likes %>" 
+                 data-reads="<%= article.reads %>" 
+                 data-title="<%= article.title %>" 
+                 data-published="<%= article.publishedAt %>">
+                <!-- displays the article heading -->
+                <h1>Article</h1>
+                <!-- content divider -->
+                <div class="content-divider"></div>
+                <!-- displays the link to the full article -->
+                <a href="/readers/article/<%= article.id %>">
+                    <!-- displays the article title -->
+                    <h3><%= article.title %></h3>
+                    <!-- displays article content using HTML rendering -->
+                    <div class="article-content-text"><%- article.content %></div> <!-- uses <%- %> for unescaped HTML -->
+                </a>
+                <!-- content divider -->
+                <div class="content-divider"></div>
+                <!-- displays the article published date -->
+                <p>Published: <%= article.publishedAt %></p>
+                <!-- displays the heart icon with the number of likes -->
+                <p><img src="/images/heart-icon.png" alt="Heart Icon" class="icon"> <%= article.likes %></p>
+                <!-- displays the heart icon with the number of likes -->
+                <p><img src="/images/reading-icon.png" alt="Reading Icon" class="icon"> <%= article.reads %></p>
+            </div>
+        <% }); %>
+    </div>
+    
+    <!-- adds JavaScript to handle article sorting -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            //gets the references to the sort dropdown and articles container
+
+            //retrieves the HTML element with the ID 'sortBy' (dropdown menu for sorting criteria) 
+            //and stores it in the variable 'sortBySelect'
+            const sortBySelect = document.getElementById('sortBy'); 
+            //retrieves the HTML element with the ID 'articlesContainer' (container where articles are displayed) 
+            //and stores it in the variable 'articlesContainer'
+            const articlesContainer = document.getElementById('articlesContainer');
+            //retrieves all article elements with the class 'article-block' 
+            //and converts the HTMLCollection to an array
+            const articles = Array.from(articlesContainer.getElementsByClassName('article-block'));
+
+            //function to sort the articles based on the selected criteria
+            function sortArticles(criteria) {
+                //creates a copy of the articles array to avoid modifying the original array directly
+                const sortedArticles = [...articles];
+                //sorts the articles based on the selected criteria
+                sortedArticles.sort((a, b) => {
+                    let valueA, valueB;
+                    //uses switch case to handle the different sorting criteria
+                    switch (criteria) {
+                        //gets the number of likes from the data attribute and parses them as integers
+                        case 'likes':
+                            valueA = parseInt(a.getAttribute('data-likes'), 10);
+                            valueB = parseInt(b.getAttribute('data-likes'), 10);
+                            //sorts them in descending order
+                            return valueB - valueA; 
+                        //gets the number of reads from the data attribute and parses them as integers
+                        case 'reads':
+                            valueA = parseInt(a.getAttribute('data-reads'), 10);
+                            valueB = parseInt(b.getAttribute('data-reads'), 10);
+                            //sorts them in descending order
+                            return valueB - valueA;
+                        //gets the title attribute and converts it to lowercase for case-insensitive comparison
+                        case 'title':
+                            valueA = a.getAttribute('data-title').toLowerCase();
+                            valueB = b.getAttribute('data-title').toLowerCase();
+                            //sorts them in aescending order
+                            return valueA.localeCompare(valueB); 
+                        //converts the publication date to a timestamp for comparison
+                        case 'publishedAt':
+                        default:
+                            valueA = new Date(a.getAttribute('data-published')).getTime();
+                            valueB = new Date(b.getAttribute('data-published')).getTime();
+                            //sorts them in descending order
+                            return valueB - valueA; 
+                    }
+                });
+
+                //clears the exisiting articles in the container
+                articlesContainer.innerHTML = '';
+                //appends the newly sorted articles back into the container
+                sortedArticles.forEach(article => articlesContainer.appendChild(article));
+            }
+
+            //adds an event listener to the sort dropdown to handle the changes
+            sortBySelect.addEventListener('change', () => {
+                sortArticles(sortBySelect.value);
+            });
+
+            //initialises the sort based on the default value selected
+            sortArticles(sortBySelect.value);
+        });
+    </script>
+</body>
+</html>

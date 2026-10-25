@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Author Settings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Junge&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/author-css/author-settings.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <!-- home link with home icon -->
+        <a href="/" class="home-link">
+            <img src="/images/home-icon.png" alt="Home">
+        </a>
+        <!-- blog title -->
+        <h1><%= blogTitle %></h1>
+        <!-- blog subtitle -->
+        <h2><%= blogSubtitle %></h2>
+        <!-- author name -->
+        <h3><%= authorName %></h3>
+        <!-- page Title -->
+        <h4>~ AUTHOR SETTING ~</h4>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <!-- link to authors home page with back arrow -->
+            <li><a href="/authors"><span>&#8592;</span> BACK TO TO AUTHOR HOMEPAGE</a></li>
+        </ul>
+    </nav>
+
+    <!-- Divider -->
+    <div class="divider"></div> 
+
+    <!-- Author's Settings Section -->
+    <div class="settings-container">
+        <!-- header for the settings section -->
+        <h2>Update Blog Settings</h2>
+        <!-- form for updating blog settings, with POST method -->
+        <form id="settings-form" action="/authors/settings" method="POST">
+            <!-- form group for blog title -->
+            <div class="form-group">
+                <!-- labels for the blog title input -->
+                <label for="blogTitle">Blog Title:</label>
+                <!-- input fields for the blog title with the current value pre-filled -->
+                <input type="text" id="blogTitle" name="blogTitle" value="<%= blogTitle %>" required>
+            </div>
+            <!-- form group for blog subtitle -->
+            <div class="form-group">
+                <!-- labels for the blog subtitle input -->
+                <label for="blogSubtitle">Blog Subtitle:</label>
+                <!-- input fields for the blog subtitle with the current value pre-filled -->
+                <input type="text" id="blogSubtitle" name="blogSubtitle" value="<%= blogSubtitle %>" required>
+            </div>
+            <!-- form group for author name -->
+            <div class="form-group">
+                <!-- labels for the author name input -->
+                <label for="authorName">Author Name:</label>
+                <!-- input fields for the author name with the current value pre-filled -->
+                <input type="text" id="authorName" name="authorName" value="<%= authorName %>" required>
+            </div>
+            <!-- submit button to save settings -->
+            <button type="submit">Save Settings</button>
+        </form>
+    </div>
+
+    <script>
+        //client-side validation
+        document.getElementById('settings-form').addEventListener('submit', function(event) {
+            //retrvies the trimmed value of the blog title input field
+            const blogTitle = document.getElementById('blogTitle').value.trim();
+            //retrvies the trimmed value of the blog subtitle input field
+            const blogSubtitle = document.getElementById('blogSubtitle').value.trim();
+            //retrvies the trimmed value of the author name input field
+            const authorName = document.getElementById('authorName').value.trim();
+
+            //checks if any of the required fields are empty
+            if (!blogTitle || !blogSubtitle || !authorName) {
+                //prevents form submission if any field is empty
+                event.preventDefault(); 
+                //displays an alert message to the user
+                alert('Please fill out all fields.');
+            }
+        });
+    </script>
+</body>
+</html>

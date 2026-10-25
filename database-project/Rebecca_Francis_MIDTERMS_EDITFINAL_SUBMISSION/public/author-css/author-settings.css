@@ -1,0 +1,157 @@
+/*adds a box-sizing rule to include padding and borders in element's total width and height*/
+* {
+    box-sizing: border-box; 
+}
+
+/*resets the default margin, padding, and styling for the body*/
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #e2ded5; /*sets a beige background colour*/
+    text-align: center; /*aligns text to the center*/
+    overflow-x: hidden;  /*hides the horizontal overflow*/
+    max-width: 100%; /*ensures the content doesn't exceed viewport width*/
+}
+
+/*sets the styling for the header*/
+header {
+    padding-top: 5px; /*adds padding to the top*/
+    padding-bottom: 20px; /*adds padding to the top*/
+    font-family: "Junge", cursive; /*font*/
+    font-style: normal; /*font style*/
+    background-color: #fff; /*sets a white background colour*/
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /*creates box shadow effect*/
+    position: relative; /*ensures the position relative for absolute positioning of home link*/
+}
+
+/*sets the styling for the main heading (h1) in the header*/
+header h1 {
+    font-weight: 100; /*font weight*/
+    font-size: 3.2em; /*font size*/
+    letter-spacing: 0.5em; /*letter spacing*/
+    margin-bottom: 10px; /*adds margin to the bottom*/
+}
+
+/*sets the styling for secondary headings (h2, h3) in the header*/
+header h2,h3 {
+    font-size: 0.7em; /*font size*/
+    letter-spacing: 0.3em; /*letter spacing*/
+}
+
+/*sets the styling for secondary headings (h4)) in the header*/
+header h4 {
+    margin-top: 20px; /*adds margin to the top*/
+    margin-bottom: 5px; /*adds margin to the bottom*/
+    font-style: italic; /*italic font style*/
+    font-size: 1.7em; /*font size*/
+    letter-spacing: 0.4em;  /*letter spacing*/
+    color: #4e3a30; /*dark brown text colour*/
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /*text shadow to create a 3D effect*/
+    transform: perspective(10px) rotateX(0.5deg); /*adds perspective and slight X-axis rotation*/
+}
+
+/*sets the styling for the home link in the header*/
+.home-link {
+    position: absolute; /*sets the position to absolute for a fixed location */
+    top: 40px; /*distance from the top*/
+    left: 90px; /*distance from the left*/
+}
+
+/*sets the styling for the home link image in the header*/
+.home-link img {
+    width: 60px; /*sets image width*/
+    height: auto; /*maintains the aspect ratio*/
+}
+
+/*sets the top margin for the navigation*/
+nav {
+    margin-top: 30px; /*adds margin to the top*/
+}
+
+/*sets the styling for the navigation UL*/
+nav ul {
+    list-style: none;/*removes default list style*/
+    padding: 0; /*removes padding*/
+    margin: 0; /*removes margin*/
+}
+
+/*sets the styling for the navigation links*/
+nav ul li {
+    text-align: right; /*aligns text to the right*/
+    margin: 0 300px; /*sets the left and right margin */
+}
+
+/*sets the styling for the navigation text*/
+nav ul li a {
+    text-decoration: none; /*removes underline */
+    color: #333; /*dark brown text colour*/
+    font-size: 0.7em; /*font size*/
+    letter-spacing: 0.3em; /*letter spacing*/
+    transition: color 0.3s ease, border-bottom 0.3s ease; /*creates smooth transition effects*/
+}
+
+/*sets the styling for the navigation links on hover*/
+nav ul li a:hover {
+    color: #83766f; /*changes colour on hover*/
+    border-bottom: 2px solid #83766f; /*adds underline on hover*/
+}
+
+/*sets the styling for the divider*/
+.divider {
+    width: 60%;/*sets the divider width*/
+    height: 2px; /*sets the divider height*/
+    background-color: #4e3a30; /*sets the divider as a dark brown colour*/
+    margin: 10px auto; /*centers the divider margin */
+}
+
+/*sets the styling for the settings container section */
+.settings-container {
+    letter-spacing: 0.15em; /*letter spacing of text*/
+    margin: 50px; /*adds margin spacing*/
+}
+
+/*sets the styling for the settings container section header text*/
+.settings-container h2{
+    color: #372c27; /*dark brown text colour*/
+}
+
+/*sets the styling for each form-group content */
+.form-group {
+    margin-bottom: 30px; /*adds bottom margin spacing*/
+    text-align: left; /*aligns text to the left*/
+    margin-left: 40px; /*adds left margin spacing*/
+}
+
+/*sets the styling for each form-group label text*/
+.form-group label {
+    display: block; /*ensures that the label text appears above the input*/
+    margin-bottom: 15px; /*adds space between label and input*/
+}
+
+/*sets the styling for text input inside .form-group */
+.form-group input[type="text"] {
+    width: calc(100% - 20px); /*width of the input*/
+    padding: 10px; /*adds the padding inside the input*/
+    font-size: 0.7em; /*sets the font size*/
+    background-color: #ebebeb; /*adds a light gray background colour*/
+    border: 1px solid #ccc; /*adds a border*/
+    border-radius: 4px; /*sets rounded corners*/
+    box-sizing: border-box; /*ensures that the padding and border are included in the width*/
+}
+
+/*sets the styling for submit button*/
+button[type="submit"] {
+    padding: 12px 20px; /*sets the padding inside the button*/
+    font-size: 1em; /*sets the font size*/
+    background-color: #4e3a30; /*sets the background colour to brown*/
+    color: white; /*sets the text colour to white*/
+    border: none; /*no border*/
+    border-radius: 10px; /*sets rounded corners*/
+    cursor: pointer; /*adds cursor*/
+    transition: background-color 0.3s ease; /*ensures smooth background colour transition*/
+}
+
+/*sets the styling for submit button on hover*/
+button[type="submit"]:hover {
+    background-color: #806e6e; /*darker brown on hover*/
+} 

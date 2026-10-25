@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Author Homepage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Junge&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/author-css/author-home.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <!-- home link with home icon -->
+        <a href="/" class="home-link">
+            <img src="/images/home-icon.png" alt="Home">
+        </a>
+        <!-- blog title -->
+        <h1><%= blogTitle %></h1>
+        <!-- blog subtitle -->
+        <h2><%= blogSubtitle %></h2>
+        <!-- author name -->
+        <h3><%= authorName %></h3>
+        <!-- page Title -->
+        <h4>~ AUTHOR HOMEPAGE ~</h4>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li>
+                <!-- link to settings page with icon -->
+                <a href="/authors/settings">
+                    <img src="/images/settings-icon.png" alt="Settings">
+                    SETTINGS
+                </a>
+            </li>
+            <!-- link to readers home page -->
+            <li><a href="/readers">GO TO READER HOMEPAGE</a></li>
+        </ul>
+    </nav>
+
+    <!-- Divider -->
+    <div class="divider"></div> 
+
+    <!-- Create New Draft Section -->
+    <div class="create-draft">
+        <!-- button to create a new draft -->
+        <a href="/authors/new-draft" class="btn-new-draft">CREATE NEW DRAFT</a>
+    </div>
+
+    <!-- Draft Articles Section -->
+    <div class="draft-articles-header">
+        <!-- header for draft articles section -->
+        <h2>Draft Articles</h2>
+        <div class="articles-container">
+            <!-- loops through each draft article to display them-->
+            <% draftArticles.forEach(article => { %>
+                <div class="article-block">
+                    <div>
+                        <!-- draft article title -->
+                        <h3><%= article.title %></h3>
+                        <!-- content divider -->
+                        <div class="content-divider"></div>
+                        <!-- displays the created date of the draft article -->
+                        <p>Created: <%= article.createdAt.toLocaleString() %></p>
+                        <!-- displays the last modified date of the draft article -->
+                        <p>Last Modified: <%= article.lastModifiedAt.toLocaleString() %></p>
+                        <!-- edit draft article button -->
+                        <a href="/authors/edit-article/<%= article.id %>" class="btn-edit-article">Edit</a>
+                        <!-- publish draft article button -->
+                        <button onclick="publishArticle('<%= article.id %>')" class="btn-publish-article">Publish</button>
+                        <!-- delete draft article button -->
+                        <button onclick="confirmDelete('<%= article.id %>')" class="btn-delete-article">Delete</button>
+                        <!-- content divider -->
+                        <div class="content-divider"></div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+
+    <!-- Published Articles Section -->
+    <div class="published-articles-header">
+        <!-- header for published articles section -->
+        <h2>Published Articles</h2>
+        <div class="articles-container">
+            <!-- loops through each published article to display them-->
+            <% publishedArticles.forEach(article => { %>
+                <div class="article-block">
+                    <div>
+                        <!-- published article title -->
+                        <h3><%= article.title %></h3>
+                        <!-- content divider -->
+                        <div class="content-divider"></div>
+                        <!-- displays the creation date of the published article -->
+                        <p>Created: <%= article.createdAt.toLocaleString() %></p>
+                        <!-- displays the published date of the article -->
+                        <p>Published: <%= article.publishedAt.toLocaleString() %></p>
+                        <!-- displays the last modified date of the published article -->
+                        <p>Last Modified: <%= article.lastModifiedAt.toLocaleString() %></p>
+                        <!-- displays the number of likes the article received -->
+                        <p><img src="/images/heart-icon.png" alt="Heart Icon" class="icon"> <%= article.likes %></p>
+                        <!-- displays the mumber of reads the article received -->
+                        <p><img src="/images/reading-icon.png" alt="Reading Icon" class="icon"> <%= article.reads %></p>
+                        <!-- edit published article button -->
+                        <a href="/authors/edit-article/<%= article.id %>" class="btn-edit-article">Edit</a>
+                        <!-- delete published article button -->
+                        <button onclick="confirmDelete('<%= article.id %>')" class="btn-delete-article">Delete</button>
+                        <!-- view published article as a reader button -->
+                        <a href="/readers/article/<%= article.id %>" class="btn-reader-article">View Article</a>
+                        <!-- moderate comments for the published article button -->
+                        <a href="/authors/moderate-comments/<%= article.id %>" class="btn-moderate-comments">Moderate Comments</a>
+                        <!-- content divider -->
+                        <div class="content-divider"></div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+    <script>
+        //function to publish an article
+        function publishArticle(articleId) {
+            //adds a confirmation dialog to confirm publishing
+            if (confirm("Are you sure you want to publish this article?")) {
+                //if user confirms, it will send a PUT request to publish the article
+                fetch(`/authors/publish-article/${articleId}`, {
+                    method: 'PUT'
+                }).then(response => {
+                    if (response.ok) {
+                        //if publishing is successful, the page is reloaded
+                        location.reload();
+                    } else {
+                         //if there's an error in publishing, the user is alerted
+                        alert('Failed to publish the article');
+                    }
+                });
+            }
+        }
+
+        //function to confirm deletion of an article
+        function confirmDelete(articleId) {
+            //adds a confirmation dialog to confirm deleting
+            if (confirm('Are you sure you want to delete this article?')) {
+                //calls the deleteArticle funciton if the user confirms
+                deleteArticle(articleId);
+            }
+        }
+
+        //function to delete the article 
+        function deleteArticle(articleId) {
+            //sends a DELETE request to delete the article 
+            fetch(`/authors/delete-article/${articleId}`, {
+                method: 'DELETE'
+            }).then(response => {
+                if (response.ok) {
+                    //if deletion is succesful, the page is reloaded
+                    location.reload();
+                } else {
+                    //otherwise, the user is alerted
+                    alert('Failed to delete the article');
+                }
+            }).catch(error => {
+                //adds an error to the console to alert the user of the failure
+                console.error('Error deleting article:', error);
+                alert('Failed to delete the article');
+            });
+        }
+    </script>
+</body>
+</html>

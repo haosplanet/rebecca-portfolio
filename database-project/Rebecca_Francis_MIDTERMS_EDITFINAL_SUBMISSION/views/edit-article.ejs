@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Article</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Junge&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/author-css/edit-article.css">
+    <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <!-- home link with home icon -->
+        <a href="/authors" class="home-link">
+            <img src="/images/home-icon.png" alt="Home">
+        </a>
+        <!-- blog title -->
+        <h1><%= blogTitle %></h1>
+        <!-- blog subtitle -->
+        <h2><%= blogSubtitle %></h2>
+        <!-- author name -->
+        <h3><%= authorName %></h3>
+        <!-- page Title -->
+        <h4>~ EDIT ARTICLE ~</h4>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <!-- link to authors home page with back arrow -->
+            <li><a href="/authors"><span>&#8592;</span> BACK TO AUTHOR HOMEPAGE</a></li>
+        </ul>
+    </nav>
+
+    <!-- Article information section -->
+    <div class="article-info">
+        <!-- displays the created date of the article -->
+        <p>Created: <%= article.createdAt.toLocaleString() %></p>
+        <!-- displays the last modified date of the article -->
+        <p>Last Modified: <%= article.lastModifiedAt.toLocaleString() %></p>
+        <!-- conditional rendering for published date -->
+        <% if (article.publishedAt) { %>
+            <!-- displays the published date of the article -->
+            <p>Published: <%= new Date(article.publishedAt).toLocaleString() %></p>
+        <% } else { %>
+            <!-- displays a message if the article is not published yet -->
+            <p>This article has not been published yet.</p>
+        <% } %>
+    </div>
+
+    <!-- Form section to edit article -->
+    <form action="/authors/edit-article/<%= article.id %>" method="POST">
+        <!-- labels for article title input field -->
+        <label for="title">Article Title</label>
+        <!-- input fields for the article title with the current value pre-filled -->
+        <input type="text" id="title" name="title" value="<%= article.title %>" required>
+        <br>
+        <!-- textarea container for the article content -->
+        <div class="textarea-container">
+            <!-- labels for the article content textarea -->
+            <label for="content">Article Text:</label>
+            <!-- textarea for the article content with the current value pre-filled -->
+            <textarea id="content" name="content" rows="10" required><%= article.content %></textarea>
+            <!-- span to display the word count -->
+            <span class="word-count" id="wordCount">Word count: 0</span>
+        </div>
+        <br>
+        <!-- submit button for the form -->
+        <button type="submit">Submit Changes</button>
+    </form>
+
+    <!-- initialising CKEditor -->
+    <script>
+        //replacing the textarea with the CKEditor
+        CKEDITOR.replace('content');
+        //function to update word count
+        function updateWordCount() {
+            //gets the content from the CKEditor instance
+            const content = CKEDITOR.instances.content.getData();
+            //calculates the word count by splitting the content into words and filtering out empty words
+            const wordCount = content.trim().split(/\s+/).filter(word => word.length > 0).length;
+            //updates the word count display
+            document.getElementById('wordCount').textContent = 'Word count: ' + wordCount;
+        }
+
+        //updates the word count on the CKEditor change
+        CKEDITOR.instances.content.on('change', updateWordCount);
+        
+        //initialises the word count on page load
+        window.addEventListener('load', updateWordCount);
+    </script>
+
+</body>
+</html>

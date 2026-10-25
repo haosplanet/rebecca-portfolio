@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Draft</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Junge&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/author-css/new-draft.css"> 
+    <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <!-- home link with home icon -->
+        <a href="/" class="home-link">
+            <img src="/images/home-icon.png" alt="Home">
+        </a>
+        <!-- blog title -->
+        <h1><%= blogTitle %></h1>
+        <!-- blog subtitle -->
+        <h2><%= blogSubtitle %></h2>
+        <!-- author name -->
+        <h3><%= authorName %></h3>
+        <!-- page Title -->
+        <h4>~ CREATE NEW DRAFT ~</h4>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <!-- link to authors home page with back arrow -->
+            <li><a href="/authors"><span>&#8592;</span> BACK TO AUTHOR HOMEPAGE</a></li>
+        </ul>
+    </nav>
+
+    <!-- Form section to create new draft article -->
+    <form action="/authors/new-draft" method="POST">
+        <!-- label for the article title input -->
+        <label for="title">Article Title:</label>
+        <!-- input fields for the article title -->
+        <input type="text" id="title" name="title" required>
+        <br>
+        <!-- article text text area container -->
+        <div class="textarea-container">
+            <!-- label for the article text textarea -->
+            <label for="content">Article Text:</label>
+            <!-- textarea for the article content -->
+            <textarea id="content" name="content" rows="10" required></textarea>
+            <!-- span to display the word count that is initially set to 0 -->
+            <span class="word-count" id="wordCount">Word count: 0</span>
+        </div>
+        <br>
+        <!-- button to submit the form and save the draft -->
+        <button type="submit">Save Draft</button>
+    </form>
+
+    <!-- initialising the CKEditor -->
+    <script>
+        //replacing the textarea with CKEditor
+        CKEDITOR.replace('content');
+
+        //javaScript to count words in CKEditor
+        CKEDITOR.instances.content.on('change', function () {
+            //retrieves the current content from the CKEditor instance
+            const content = CKEDITOR.instances.content.getData();
+            //calculates the word count by trimming the content, splitting it into words based on whitespace, and counting the number of words
+            const wordCount = content.trim().split(/\s+/).length;
+            //updates the text content of the HTML element with the ID 'wordCount' to display the current word count
+            document.getElementById('wordCount').textContent = 'Word count: ' + wordCount;
+        });
+    </script>
+
+</body>
+</html>

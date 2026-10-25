@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= blogTitle %></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Junge&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <!-- home link with home icon -->
+        <a href="/" class="home-link">
+            <img src="/images/home-icon.png" alt="Home">
+        </a>
+        <!-- blog title -->
+        <h1><%= blogTitle %></h1>
+        <!-- blog subtitle -->
+        <h2><%= blogSubtitle %></h2>
+        <!-- author name -->
+        <h3><%= authorName %></h3>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <!-- link to authors home page -->
+            <li><a href="/authors">AUTHOR HOMEPAGE</a></li>
+            <!-- link to readers home page -->
+            <li><a href="/readers">READER HOMEPAGE</a></li>
+        </ul>
+    </nav>
+
+    <!-- Divider -->
+    <div class="divider"></div> 
+
+    <!-- Adds image to the homepage -->
+    <div class="image-container">
+        <!-- displays the blog subtitle & author home with an image -->
+        <p><%= blogSubtitle %><br>Done By : <%= authorName %></p>
+        <img src="/images/writing.png" alt="Sample Image">
+    </div>
+</body>
+</html>

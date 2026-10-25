@@ -1,0 +1,254 @@
+/*adds a box-sizing rule to include padding and borders in element's total width and height*/
+* {
+    box-sizing: border-box; 
+}
+
+/*resets the default margin, padding, and styling for the body*/
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #e2ded5; /*sets a beige background colour*/
+    text-align: center; /*aligns text to the center*/
+    overflow-x: hidden;  /*hides the horizontal overflow*/
+    max-width: 100%; /*ensures the content doesn't exceed viewport width*/
+}
+
+/*sets the styling for the header*/
+header {
+    padding-top: 5px; /*adds padding to the top*/
+    padding-bottom: 20px; /*adds padding to the top*/
+    font-family: "Junge", cursive; /*font*/
+    font-style: normal; /*font style*/
+    background-color: #fff; /*sets a white background colour*/
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /*creates box shadow effect*/
+    position: relative; /*ensures the position relative for absolute positioning of home link*/
+}
+
+/*sets the styling for the main heading (h1) in the header*/
+header h1 {
+    font-weight: 100; /*font weight*/
+    font-size: 3.2em; /*font size*/
+    letter-spacing: 0.5em; /*letter spacing*/
+    margin-bottom: 10px; /*adds margin to the bottom*/
+}
+
+/*sets the styling for secondary headings (h2, h3) in the header*/
+header h2,h3 {
+    font-size: 0.7em; /*font size*/
+    letter-spacing: 0.3em; /*letter spacing*/
+}
+
+/*sets the styling for secondary headings (h4)) in the header*/
+header h4 {
+    margin-top: 20px; /*adds margin to the top*/
+    margin-bottom: 5px; /*adds margin to the bottom*/
+    font-style: italic; /*italic font style*/
+    font-size: 1.7em; /*font size*/
+    letter-spacing: 0.4em;  /*letter spacing*/
+    color: #4e3a30; /*dark brown text colour*/
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /*text shadow to create a 3D effect*/
+    transform: perspective(10px) rotateX(0.5deg); /*adds perspective and slight X-axis rotation*/
+}
+
+/*sets the styling for the home link in the header*/
+.home-link {
+    position: absolute; /*sets the position to absolute for a fixed location */
+    top: 40px; /*distance from the top*/
+    left: 90px; /*distance from the left*/
+}
+
+/*sets the styling for the home link image in the header*/
+.home-link img {
+    width: 60px; /*sets image width*/
+    height: auto; /*maintains the aspect ratio*/
+}
+
+
+/*sets the top margin for the navigation*/
+nav {
+    margin-top: 30px; /*adds margin to the top*/
+    margin-bottom: 30px; /*adds margin to the bottom*/
+}
+
+/*sets the styling for the navigation UL*/
+nav ul {
+    list-style: none;/*removes default list style*/
+    padding: 0; /*removes padding*/
+    margin: 0; /*removes margin*/
+}
+
+/*sets the styling for the navigation links*/
+nav ul li {
+    text-align: right; /*aligns text to the right*/
+    margin: 0 300px; /*sets the left and right margin */
+}
+
+/*sets the styling for the navigation text*/
+nav ul li a {
+    text-decoration: none; /*removes underline */
+    color: #333; /*dark brown text colour*/
+    font-size: 0.7em; /*font size*/
+    letter-spacing: 0.3em; /*letter spacing*/
+    transition: color 0.3s ease, border-bottom 0.3s ease; /*creates smooth transition effects*/
+}
+
+/*sets the styling for the navigation links on hover*/
+nav ul li a:hover {
+    color: #83766f; /*changes colour on hover*/
+    border-bottom: 2px solid #83766f; /*adds underline on hover*/
+}
+
+/*sets the styling for the divider*/
+.divider {
+    width: 60%; /*sets the divider width*/
+    height: 2px; /*sets the divider height*/
+    background-color: #4e3a30; /*sets the divider as a dark brown colour*/
+    margin: 10px auto; /*centers the divider margin*/
+}
+
+/*sets the styling for the comments container*/
+.comments-container {
+    width: 95%; /*sets the width to 90%*/
+    margin: 0 auto; /*centers the container horizontally*/
+    overflow-x: auto; /*enables horizontal scrolling if the content overflows the container's width*/
+    padding: 0 10px; /*adds horizontal padding*/
+    box-sizing: border-box; /*ensures padding is included in the width calculation*/
+}
+
+/*sets the styles for the list of comments */
+.comments-list {
+    list-style: none; /*removes default list item bullets*/
+    padding: 0; /*removes default padding*/
+    margin: 0; /*removes default margin*/
+}
+
+/*sets the styles for each comment item */
+.comment-item {
+    display: grid;  /*uses the CSS Grid layout */
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 2fr; /*defines 5 columns with varying widths*/
+    gap: 5px; /*adds space between columns*/
+    align-items: center; /*aligns items vertically in the center*/
+    border: 1px solid #ddd; /*adds a light border around each comment item*/
+    border-radius: 8px; /*sets the the round corners of the border*/
+    padding: 10px; /*adds padding inside each comment item*/
+    background-color: #d1cdcd; /*sets the background colour for the comment item*/
+    margin-bottom: 10px; /*adds space below each comment item*/
+}
+
+/*sets the styles for the avatar image */
+.comment-avatar img {
+    width: 50%; /*sets image width*/
+}
+
+/*sets the styles for the published date*/
+.comment-published-date {
+    font-size: 0.9em; /* Sets the font size*/
+    color: #231a1a; /* Sets the text colour*/
+}
+
+/*sets the styles for the buttons container*/
+.comment-buttons {
+    display: flex; /* Uses Flexbox layout*/
+    gap: 10px; /* Adds space between buttons*/
+}
+
+/*sets the styles for the approve and delete buttons*/
+.btn-approve-comment, .btn-delete-comment {
+    background-color: #007bff; /*blue background colour for approve button*/
+    color: white; /*sets the text colour*/
+    border: none; /*removes default border*/
+    padding: 8px 16px; /*adds padding inside the button*/
+    border-radius: 4px; /*sets the the round corners of the border*/
+    cursor: pointer; /*changes the cursor to a pointer on hover*/
+}
+
+/*sets the styles for the delete button*/
+.btn-delete-comment {
+    background-color: #dc3545; /*sets the background colour to red*/
+}
+
+
+/*sets the styles for the heading in the reply comment section*/
+.reply-comment-section h4 {
+    font-size: 0.9em; /*sets the font size*/
+}
+
+/*sets the styles for the reply form container*/
+.reply-form {
+    margin-top: 10px; /*adds a top margin*/
+}
+
+/*sets the styles for the list of replies */
+.reply-list {
+    margin-top: 10px; /*adds a top margin*/
+    list-style: none; /*removes the default list styling*/
+    font-size: 0.8em; /*sets the font size*/
+    color: #555050; /*sets the text colour to a dark grey*/
+}
+
+/*sets the styles for each reply item in the list*/
+.reply-item {
+    width: 70%; /*sets the width of each reply item to 70% of its container*/
+    margin-left: 50px; /*adds a left margin*/
+    border: 1px solid #555050; /*adds a solid border*/
+    border-radius: 5px; /*sets the rounded corners of the border*/
+    padding: 10px; /*adds padding inside the reply item */
+    margin-bottom: 10px; /*adds a bottom margin between reply items */
+}
+
+/*sets the styles for the add reply button*/
+.btn-add-reply {
+    font-size: 0.7em; /*sets the font size*/
+    background-color: #4d6988; /*sets the background colour of the button to blue*/
+    color: white; /*sets the text colour of the button*/
+    border: none; /*removes the default border around the button*/
+    padding: 8px 12px; /*adds vertical and horizontal padding inside the button*/
+    border-radius: 4px; /*sets the rounded corners of the border*/
+    cursor: pointer; /*changes the cursor to a pointer on hover*/
+}
+
+/*sets the styles for the textarea inside the reply form */
+.reply-form textarea {
+    width: 70%; /*sets the width of each reply item to 70% of its container*/
+    margin-left: 50px; /*adds a left margin*/
+    border: 1px solid #ccc; /*adds a light grey border to the textarea*/
+    border-radius: 5px; /*sets the rounded corners of the border*/
+    padding: 10px; /*adds padding inside the textarea */
+    box-sizing: border-box; /*includes padding and border in the element's total width and height*/
+    font-size: 0.7em; /*sets the font size*/
+    resize: vertical; /*allows the textarea to be resized only vertically*/
+}
+
+/*sets the styles for the button inside the reply form */
+.reply-form button {
+    font-size: 0.7em; /*sets the font size*/
+    background-color: #5b4e71; /*sets the background colour of the button*/
+    color: white; /*sets the text colour of the button to white*/
+    border: none; /*removes the default border of the button*/
+    padding: 8px 16px; /*adds vertical and horizontal padding inside the button*/
+    border-radius: 4px; /*sets the rounded corners of the border*/
+    cursor: pointer; /*changes the cursor to a pointer on hover*/
+}
+
+/*sets the styles for the avatar images */
+.avatar-icon {
+    width: 20px; /*sets the width of the avatar image*/
+    height: 20px; /*sets the height of the avatar image */
+    border-radius: 50%; /*rounds the avatar image to a circle*/
+}
+
+/*sets the styles for the reaction-icon images */
+.reaction-icon {
+    width: 40px; /*sets the width of the reaction image*/
+    height: 40px; /*sets the height of the reaction image*/
+    vertical-align: middle; /*aligns the image to the center*/
+    gap: 10px; /*sets a gap between the images*/
+}
+
+/*sets the styles for the reaction buttons */
+.comment-reactions button {
+    border: none; /*removes the default border of the button*/
+    background: none; /*removes the background colour of the button*/
+    cursor: pointer; /*changes the cursor to a pointer on hover*/
+    padding: 0; /*removes the padding of the button*/
+}

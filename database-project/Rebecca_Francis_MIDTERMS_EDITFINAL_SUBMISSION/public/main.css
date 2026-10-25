@@ -1,0 +1,111 @@
+/*adds a box-sizing rule to include padding and borders in element's total width and height*/
+* {
+    box-sizing: border-box; 
+}
+
+/*resets the default margin, padding, and styling for the body*/
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #e2ded5; /*sets a beige background colour*/
+    text-align: center; /*aligns text to center align text content */
+    overflow-x: hidden;  /*hides the horizontal overflow*/
+    max-width: 100%; /*ensures the content doesn't exceed viewport width*/
+}
+
+/*sets the styling for the header*/
+header {
+    padding-top: 5px; /*adds padding to the top*/
+    padding-bottom: 20px; /*adds padding to the top*/
+    font-family: "Junge", cursive; /*font*/
+    font-style: normal; /*font style*/
+    background-color: #fff; /*sets a white background colour*/
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /*creates box shadow effect*/
+    position: relative; /*ensures the position relative for absolute positioning of home link*/
+}
+
+/*sets the styling for the main heading (h1) in the header*/
+header h1 {
+    font-weight: 100; /*font weight*/
+    font-size: 3.2em; /*font size*/
+    letter-spacing: 0.5em; /*letter spacing*/
+    margin-bottom: 10px; /*adds margin to the bottom*/
+}
+
+/*sets the styling for secondary headings (h2, h3) in the header*/
+header h2,h3 {
+    font-size: 0.7em; /*font size*/
+    letter-spacing: 0.3em; /*letter spacing*/
+}
+
+/*sets the styling for the home link in the header*/
+.home-link {
+    position: absolute; /*sets the position to absolute for a fixed location */
+    top: 40px; /*distance from the top*/
+    left: 90px; /*distance from the left*/
+}
+
+/*sets the styling for the home link image in the header*/
+.home-link img {
+    width: 60px; /*sets image width*/
+    height: auto; /*maintains the aspect rati */
+}
+
+/*sets the styling for the navigation UL*/
+nav ul {
+    list-style: none;/*removes default list style*/
+    padding: 0; /*removes padding*/
+    margin: 45px 0; /*removes margin*/
+}
+
+/*sets the styling for the navigation links*/
+nav ul li {
+    display: inline; /*displays as inline block*/
+    margin: 0 200px; /*sets the left and right margin */
+}
+
+/*sets the styling for the navigation text*/
+nav ul li a {
+    text-decoration: none; /*removes underline */
+    color: #333; /*dark brown text colour*/
+    font-size: 1.2em; /*font size*/
+    letter-spacing: 0.3em; /*letter spacing*/
+    transition: color 0.3s ease, border-bottom 0.3s ease; /*creates smooth transition effects*/
+}
+
+/*sets the styling for the navigation links on hover*/
+nav ul li a:hover {
+    color: #83766f; /*changes color on hover*/
+    border-bottom: 2px solid #83766f; /*adds underline on hover*/
+}
+
+/*sets the styling for the divider*/
+.divider {
+    width: 80%; /*sets the divider width*/
+    height: 2px; /*sets the divider height*/
+    background-color: #4e3a30; /*sets the divivder as a dark brown colour*/
+    margin: 5px auto;  /*sets margin to the top & bottom and auto for left & right*/
+}
+
+/*sets the margin for the image container*/
+.image-container {
+    margin-top: 5px; /*adds margin to the top*/
+}
+
+/*sets the styling for the text inside the image container*/
+.image-container p {
+    font-size: 1.0em;/*font size*/
+    color: #4e3a30; /*dark brown text colour*/
+    margin-top: 30px; /*adds margin to the top*/
+    line-height: 1.5em; /*sets space between lines*/
+}
+
+/*sets the styling for the img inside the image container*/
+.image-container img {
+    width: 100%; /*sets image width to the Full width of the parent container's width */
+    max-width: 600px; /*sets image width*/
+    height: auto; /*maintains aspect ratio*/
+    display: block; /*displays as block element*/
+    margin-left: auto; /*centers the image*/
+    margin-right: auto; /*centers the image*/
+}

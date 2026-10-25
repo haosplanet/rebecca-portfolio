@@ -1,0 +1,178 @@
+/*adds a box-sizing rule to include padding and borders in element's total width and height*/
+* {
+    box-sizing: border-box; 
+}
+
+/*resets the default margin, padding, and styling for the body*/
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #e2ded5; /*sets a beige background colour*/
+    text-align: center; /*aligns text to the center*/
+    overflow-x: hidden;  /*hides the horizontal overflow*/
+    max-width: 100%; /*ensures the content doesn't exceed viewport width*/
+}
+
+/*sets the styling for the header*/
+header {
+    padding-top: 5px; /*adds padding to the top*/
+    padding-bottom: 20px; /*adds padding to the top*/
+    font-family: "Junge", cursive; /*font*/
+    font-style: normal; /*font style*/
+    background-color: #fff; /*sets a white background colour*/
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /*creates box shadow effect*/
+    position: relative; /*ensures the position relative for absolute positioning of home link*/
+}
+
+/*sets the styling for the main heading (h1) in the header*/
+header h1 {
+    font-weight: 100; /*font weight*/
+    font-size: 3.2em; /*font size*/
+    letter-spacing: 0.5em; /*letter spacing*/
+    margin-bottom: 10px; /*adds margin to the bottom*/
+}
+
+/*sets the styling for secondary headings (h2, h3) in the header*/
+header h2,h3 {
+    font-size: 0.7em; /*font size*/
+    letter-spacing: 0.3em; /*letter spacing*/
+}
+
+/*sets the styling for secondary headings (h4)) in the header*/
+header h4 {
+    margin-top: 20px; /*adds margin to the top*/
+    margin-bottom: 5px; /*adds margin to the bottom*/
+    font-style: italic; /*italic font style*/
+    font-size: 1.7em; /*font size*/
+    letter-spacing: 0.4em;  /*letter spacing*/
+    color: #4e3a30; /*dark brown text colour*/
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /*text shadow to create a 3D effect*/
+    transform: perspective(10px) rotateX(0.5deg); /*adds perspective and slight X-axis rotation*/
+}
+
+/*sets the styling for the home link in the header*/
+.home-link {
+    position: absolute; /*sets the position to absolute for a fixed location */
+    top: 40px; /*distance from the top*/
+    left: 90px; /*distance from the left*/
+}
+
+/*sets the styling for the home link image in the header*/
+.home-link img {
+    width: 60px; /*sets image width*/
+    height: auto; /*maintains the aspect ratio*/
+}
+
+/*sets the top margin for the navigation*/
+nav {
+    margin-top: 30px; /*adds margin to the top*/
+}
+
+/*sets the styling for the navigation UL*/
+nav ul {
+    list-style: none;/*removes default list style*/
+    padding: 0; /*removes padding*/
+    margin: 0; /*removes margin*/
+}
+
+/*sets the styling for the navigation links*/
+nav ul li {
+    text-align: right; /*aligns text to the right*/
+    margin: 0 300px; /*sets the left and right margin */
+}
+
+/*sets the styling for the navigation text*/
+nav ul li a {
+    text-decoration: none; /*removes underline */
+    color: #333; /*dark brown text colour*/
+    font-size: 0.7em; /*font size*/
+    letter-spacing: 0.3em; /*letter spacing*/
+    transition: color 0.3s ease, border-bottom 0.3s ease; /*creates smooth transition effects*/
+}
+
+/*sets the styling for the navigation links on hover*/
+nav ul li a:hover {
+    color: #83766f; /*changes colour on hover*/
+    border-bottom: 2px solid #83766f; /*adds underline on hover*/
+}
+
+/*sets the styling for the article information section */
+.article-info {
+    margin: 20px auto; /*aligns to the center and sets margin*/
+    max-width: 900px; /*limits the width of the container*/
+    padding: 20px; /*adds padding*/
+    background-color: #fff; /*white background colour*/
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /*box shadow to create a 3D effect*/
+    border-radius: 5px; /*sets rounded corners*/
+    text-align: left; /*aligns text to the left*/
+}
+
+/*sets the styling for the text inside the article information section */
+.article-info p {
+    margin: 5px 0; /*adds margin to the top and bottom*/
+    font-size: 0.9em; /*font size*/
+    color: #333; /*dark brown text colour*/
+}
+
+/*sets styles for the form*/
+form {
+    text-align: left; /*aligns text to the left*/
+    margin: 20px auto; /*adds 20px margin to the top and bottom & auto margin to the left and right*/
+    max-width: 900px; /*limits the maximum width of the form*/
+    padding: 20px; /*adds padding*/
+    background-color: #fff; /**white background*/
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /*box shadow to create a 3D effect*/
+    border-radius: 5px; /*sets rounded corners*/
+}
+
+/*sets styles for the form labels*/
+form label {
+    font-weight: bold; /*bolds the labels*/
+    display: block; /*makes the labels block-level elements for layout*/
+    margin-bottom: 10px; /*adds bottom margin to separate labels*/
+    letter-spacing: 0.15em; /*letter spacing*/
+}
+
+/*sets styles for the text inputs and textareas within the form*/
+form input[type="text"],
+form textarea {
+    width: 100%; /*inputs and textareas will fill the entire width of the form*/
+    padding: 10px; /*adds padding*/
+    margin-bottom: 10px; /*adds bottom margin to separate inputs and textareas*/
+    border: 1px solid #ccc; /*adds border*/
+    border-radius: 5px; /*sets rounded corners*/
+    box-sizing: border-box; /*ensures padding and border are included in the width*/
+    font-size: 1em; /*font size*/
+}
+
+/*sets styles for the button within the form*/
+form button {
+    font-family: "Junge", cursive; /*sets font*/
+    background-color: #4e3a30; /*brown background colour of the button*/
+    color: #fff; /*white text colour*/
+    border: none; /*no border*/
+    padding: 10px 20px; /*adds padding*/
+    font-size: 0.7em; /*font size*/
+    border-radius: 5px; /*sets rounded corners*/
+    cursor: pointer; /*adds pointer as cursor on hover*/
+    letter-spacing: 0.15em; /*letter spacing*/
+}
+
+/*sets styles for the button on hover within the form*/
+form button:hover {
+    background-color: #83766f; /*lighter brown background colour of the button*/
+}
+
+/*sets styles for textarea container*/
+.textarea-container {
+    position: relative; /*sets the position relative for the container*/
+    width: 100%; /*makes the container fill the entire width*/
+}
+
+.word-count {
+    position: absolute; /*positions word count absolutely within its container*/
+    bottom: 30px; /*sets distance from the bottom*/
+    right: 10px; /*sets distance from the right*/
+    font-size: 0.8em; /*font size*/
+    color: #666; /*grey text colour*/
+}
